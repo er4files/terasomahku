@@ -1,5 +1,11 @@
 <?php
+    // Pastikan permintaan adalah POST
+    if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+        echo "Metode tidak diizinkan.";
+        exit;
+    }
 
+    // Validasi data yang diterima
     $to = "rahmaderasugiarto@gmail.com";
     $from = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $name = htmlspecialchars($_POST['name']);

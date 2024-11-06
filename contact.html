@@ -158,7 +158,7 @@
                         <h2 class="contact-title">Hubungi Kami</h2>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="form-contact contact_form" id="contactForm" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -172,17 +172,18 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan alamat email'" placeholder="Email">
+                                        <input class="form-control valid" name="phone" id="phone" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan nomor HP'" placeholder="No HP">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-sm-12">
                                     <div class="form-group">
-                                        <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan Subjek'" placeholder="Subjek">
+                                        <input class="form-control valid" name="address" id="address" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan alamat Anda'" placeholder="Alamat Anda">
                                     </div>
                                 </div>
+                                
                             </div>
                             <div class="form-group mt-3">
-                                <button type="submit" class="button button-contactForm boxed-btn">Kirim</button>
+                                <button type="submit" class="button button-contactForm boxed-btn" id="whatsappButton">Kirim Pesan via WhatsApp</button>
                             </div>
                         </form>
                     </div>
@@ -402,6 +403,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     
             });
         </script>
+
+<script>
+    document.getElementById('whatsappButton').addEventListener('click', function() {
+        // Get form data
+        var name = document.getElementById('name').value;
+        var address = document.getElementById('address').value;
+        var phone = document.getElementById('phone').value;
+        var message = document.getElementById('message').value;
+
+        // Prepare message for WhatsApp
+        var whatsappMessage = `*Nama*: ${name}\n*Alamat*: ${address}\n*No HP*: ${phone}\n*Pesan*: ${message}`;
+        
+        // WhatsApp API link with prefilled message
+        var whatsappUrl = `https://wa.me/+6282244286612?text=${encodeURIComponent(whatsappMessage)}`;
+
+        // Redirect to WhatsApp
+        window.open(whatsappUrl, '_blank');
+    });
+</script>
 
 
 
